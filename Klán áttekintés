@@ -644,7 +644,7 @@ if (game_data.mode == "members_troops") {
 
     // fal szintek lekérdezése a táblázatban szereplő játékosok összes falujához
     function buildings() {
-		$("body").append(`<div id="tarolo" style="display: none"></div>`);
+	$("body").append(`<div id="tarolo" style="display: none"></div>`);
         var player_id = $(".player_id").eq(idx).attr("name");
         $("#tarolo").load("https://" + location.host + game_data.link_base_pure + "ally&mode=members_buildings&player_id=" + player_id + " .w100", function(responseTxt, statusTxt, xhr) {
             if(statusTxt == "success") {
@@ -670,8 +670,8 @@ if (game_data.mode == "members_troops") {
 
     // beérkező erősítés és a faluban lévő védők(tanyahely szerint) lekérdezése a táblázatban szereplő játékosok összes falujához
     function defense() {
-		$("body").append(`<div id="tarolo" style="display: none"></div>`);
-	    var player_id = $(".player_id").eq(index).attr("name");
+	$("body").append(`<div id="tarolo" style="display: none"></div>`);
+	var player_id = $(".player_id").eq(index).attr("name");
         $("#tarolo").load("https://" + location.host + game_data.link_base_pure + "ally&mode=members_defense&player_id=" + player_id + " .w100", function(responseTxt, statusTxt, xhr) {
             if(statusTxt == "success") {
                 var select = $("#tarolo").find(".w100").find("tr").find("a").length;
