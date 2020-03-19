@@ -6,7 +6,7 @@ var player = game_data.player.name;
 var world = game_data.world;
 let script = {
 	name: "Tribe overview",
-	version: "v1.0"
+	version: "v1.1"
 }
 let issue = {
 	text: ["|Player|World|Script name|Script version|",
