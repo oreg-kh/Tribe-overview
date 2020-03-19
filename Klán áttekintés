@@ -812,9 +812,10 @@ if (game_data.mode == "members_troops") {
 			var egysegek = $(".w100").find("tr").eq(i).find("td");
 
 			if (game_data.units[3] == "archer") {
-				tomb = [landzsas, kardos, bardos, ijasz, felderito, konnyulovas, lovasijasz, nehezlovas, kos, katapult, lovag, nemes_falunkent];
+			    if (game_data.units.includes("knight")) {
+		                tomb = [landzsas, kardos, bardos, ijasz, felderito, konnyulovas, lovasijasz, nehezlovas, kos, katapult, lovag, nemes_falunkent];
 				for (k = 0; k < 12; k++) {
-					tomb[k] = Number(egysegek.eq(k + 1)[0].innerText.replace(".", ""));
+				    tomb[k] = Number(egysegek.eq(k + 1)[0].innerText.replace(".", ""));
 				}
 				nemes_osszes += tomb[tomb.length - 1];
 				nemes_falunkent = tomb[tomb.length - 1];
@@ -825,8 +826,24 @@ if (game_data.mode == "members_troops") {
 				archer += tomb[3];
 				heavy += tomb[7];
 				select();
+			    } else {
+		                tomb = [landzsas, kardos, bardos, ijasz, felderito, konnyulovas, lovasijasz, nehezlovas, kos, katapult, nemes_falunkent];
+				for (k = 0; k < 11; k++) {
+				    tomb[k] = Number(egysegek.eq(k + 1)[0].innerText.replace(".", ""));
+				}
+				nemes_osszes += tomb[tomb.length - 1];
+				nemes_falunkent = tomb[tomb.length - 1];
+				tamado = tomb[2] + tomb[5] * 4 + tomb[6] * 5 + tomb[7] * 6 + tomb[8] * 5 + tomb[9] * 8;
+				vedo = tomb[0] + tomb[1] + tomb[3] + tomb[7] * 6 + tomb[8] * 5 + tomb[9] * 8;
+				spear += tomb[0];
+				sword += tomb[1];
+				archer += tomb[3];
+				heavy += tomb[7];
+				select();
+		            }
 			} else {
-				tomb = [landzsas, kardos, bardos, felderito, konnyulovas, nehezlovas, kos, katapult, lovag, nemes_falunkent];
+			    if (game_data.units.includes("knight")) {
+		                tomb = [landzsas, kardos, bardos, felderito, konnyulovas, nehezlovas, kos, katapult, lovag, nemes_falunkent];
 				for (k = 0; k < 10; k++) {
 					tomb[k] = Number(egysegek.eq(k + 1)[0].innerText.replace(".", ""));
 				}
@@ -839,6 +856,21 @@ if (game_data.mode == "members_troops") {
 				archer = 0;
 				heavy += tomb[5];
 				select();
+			    } else {
+		                tomb = [landzsas, kardos, bardos, felderito, konnyulovas, nehezlovas, kos, katapult, nemes_falunkent];
+				for (k = 0; k < 9; k++) {
+					tomb[k] = Number(egysegek.eq(k + 1)[0].innerText.replace(".", ""));
+				}
+				nemes_osszes += tomb[tomb.length - 1];
+				nemes_falunkent = tomb[tomb.length - 1];
+				tamado = tomb[2] + tomb[4] * 4 + tomb[5] * 6 + tomb[6] * 5 + tomb[7] * 8;
+				vedo = tomb[0] + tomb[1] + tomb[5] * 6 + tomb[6] * 5 + tomb[7] * 8;
+				spear += tomb[0];
+				sword += tomb[1];
+				archer = 0;
+				heavy += tomb[5];
+				select();
+		 	    }
 			}
 			storeToMap(id, type, nemes_falunkent);
 		}
